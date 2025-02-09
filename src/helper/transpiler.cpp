@@ -20,8 +20,15 @@ void transpiler::transpile(const char* input) {
         std::vector<String> args;
 
         int argStart = 0;
+        bool inQuotes = false;
         while (argStart < argsStr.length()) {
-            const int spacePos = argsStr.indexOf(' ', argStart);
+            if (argsStr[argStart] == '\"') {
+                inQuotes = !inQuotes;
+                argStart++;
+                continue;
+            }
+
+            const int spacePos = inQuotes ? argsStr.indexOf('\"', argStart) : argsStr.indexOf(' ', argStart);
 
             if (spacePos == -1) {
                 String arg = argsStr.substring(argStart);
@@ -38,7 +45,6 @@ void transpiler::transpile(const char* input) {
         }
 
       processLine(command.c_str(), args);
-
     }
 }
 
@@ -51,24 +57,24 @@ bool transpiler::checkArgs(const std::vector<String>& args, const uint8_t expect
 }
 
 void transpiler::processLine(const char* command, const std::vector<String>& args) {
-    if (strcmp(command, "write") == 0) {
+    if (strcmp(command, "write") == 0) { // write "<text>"
         if (!checkArgs(args, 1)) return;
         Keyboard.print(args[0]);
     }
 
-    if (strcmp(command, "writeLn") == 0) {
+    if (strcmp(command, "writeLn") == 0) { // writeLn "<text>"
         if (!checkArgs(args, 1)) return;
         Keyboard.print(args[0]);
         Keyboard.press(KEY_RETURN);
         Keyboard.release(KEY_RETURN);
     }
 
-    if (strcmp(command, "delay") == 0) {
+    if (strcmp(command, "delay") == 0) { // delay "<integer>"
         if (!checkArgs(args, 1)) return;
         delay(args[0].toInt());
     }
 
-    if (strcmp(command, "terminal") == 0) {
+    if (strcmp(command, "terminal") == 0) { // terminal "<operating_system>"
         if (!checkArgs(args, 1)) return;
         if (args[0] == "windows") {
             Keyboard.press(KEY_LEFT_GUI);
@@ -80,7 +86,65 @@ void transpiler::processLine(const char* command, const std::vector<String>& arg
             Keyboard.print("cmd");
             Keyboard.press(KEY_RETURN);
             Keyboard.releaseAll();
+        } else if (args[0] == "linux") {
+            Keyboard.press(KEY_LEFT_CTRL);
+            Keyboard.press(KEY_LEFT_ALT);
+            Keyboard.press('t');
+            Keyboard.releaseAll();
+        } else if (args[0] == "mac") {
+            Keyboard.press(KEY_LEFT_GUI);
+            Keyboard.press(' ');
+            Keyboard.releaseAll();
+
+            delay(800);
+
+            Keyboard.print("terminal");
+            Keyboard.press(KEY_RETURN);
+            Keyboard.releaseAll();
         }
     }
 
+    if (strcmp(command, "functionKey") == 0) // functionKey "<F1-F24>"
+    {
+        if (!checkArgs(args, 1)) return;
+        if (args[0] == "F1") Keyboard.press(KEY_F1);
+        else if (args[0] == "F2") Keyboard.press(KEY_F2);
+        else if (args[0] == "F3") Keyboard.press(KEY_F3);
+        else if (args[0] == "F4") Keyboard.press(KEY_F4);
+        else if (args[0] == "F5") Keyboard.press(KEY_F5);
+        else if (args[0] == "F6") Keyboard.press(KEY_F6);
+        else if (args[0] == "F7") Keyboard.press(KEY_F7);
+        else if (args[0] == "F8") Keyboard.press(KEY_F8);
+        else if (args[0] == "F9") Keyboard.press(KEY_F9);
+        else if (args[0] == "F10") Keyboard.press(KEY_F10);
+        else if (args[0] == "F11") Keyboard.press(KEY_F11);
+        else if (args[0] == "F12") Keyboard.press(KEY_F12);
+        else if (args[0] == "F13") Keyboard.press(KEY_F13);
+        else if (args[0] == "F14") Keyboard.press(KEY_F14);
+        else if (args[0] == "F15") Keyboard.press(KEY_F15);
+        else if (args[0] == "F16") Keyboard.press(KEY_F16);
+        else if (args[0] == "F17") Keyboard.press(KEY_F17);
+        else if (args[0] == "F18") Keyboard.press(KEY_F18);
+        else if (args[0] == "F19") Keyboard.press(KEY_F19);
+        else if (args[0] == "F20") Keyboard.press(KEY_F20);
+        else if (args[0] == "F21") Keyboard.press(KEY_F21);
+        else if (args[0] == "F22") Keyboard.press(KEY_F22);
+        else if (args[0] == "F23") Keyboard.press(KEY_F23);
+        else if (args[0] == "F24") Keyboard.press(KEY_F24);
+        else return;
+
+        Keyboard.releaseAll();
+    }
+
+    if (strcmp(command, "arrowKey") == 0) // arrowKey "<up/down/left/right>"
+    {
+        if (!checkArgs(args, 1)) return;
+        if (args[0] == "up") Keyboard.press(KEY_UP_ARROW);
+        else if (args[0] == "down") Keyboard.press(KEY_DOWN_ARROW);
+        else if (args[0] == "left") Keyboard.press(KEY_LEFT_ARROW);
+        else if (args[0] == "right") Keyboard.press(KEY_RIGHT_ARROW);
+        else return;
+
+        Keyboard.releaseAll();
+    }
 }
