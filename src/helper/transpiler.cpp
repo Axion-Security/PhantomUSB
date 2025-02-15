@@ -53,11 +53,14 @@ bool transpiler::checkArgs(const std::vector<String>& args, const uint8_t expect
         return false;
     }
 
+    Serial.println( "Invalid number of arguments" );
+
     return true;
 }
 
 void transpiler::processLine(const char* command, const std::vector<String>& args) {
     if (strcmp(command, "write") == 0) { // write "<text>"
+        Serial.println( "write" );
         if (!checkArgs(args, 1)) return;
         Keyboard.print(args[0]);
     }
