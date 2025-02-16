@@ -6,6 +6,14 @@
 // GPIO 17 | TX
 // GPIO 16 | RX
 
+// ESP32   | LED (Write)
+// GPIO 19 | POSITIVE
+// GND     | NEGATIVE
+
+// ESP32   | LED (Status)
+// GPIO 18 | POSITIVE
+// GND     | NEGATIVE
+
 #define W_LED_PIN 19 // WRITE Indicator
 #define S_LED_PIN 18 // STATUS Indicator
 #define MAX_INIT_ATTEMPTS 10
