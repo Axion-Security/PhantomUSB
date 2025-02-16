@@ -107,6 +107,54 @@ void transpiler::processLine(const char* command, const std::vector<String>& arg
         }
     }
 
+    if (strcmp(command, "winShutdown") == 0)
+    {
+        Keyboard.press(KEY_LEFT_GUI);
+        Keyboard.press('X');
+        Keyboard.releaseAll();
+
+        delay(1000);
+
+        Keyboard.press('U');
+        Keyboard.releaseAll();
+
+        Keyboard.press('U');
+        Keyboard.releaseAll();
+    }
+
+    if (strcmp(command, "key") == 0)
+    {
+        if (!checkArgs(args, 1)) return;
+
+        if (args[0] == "enter") Keyboard.press(KEY_RETURN);
+        else if (args[0] == "esc") Keyboard.press(KEY_ESC);
+        else if (args[0] == "backspace") Keyboard.press(KEY_BACKSPACE);
+        else if (args[0] == "tab") Keyboard.press(KEY_TAB);
+        else if (args[0] == "space") Keyboard.press(' ');
+        else if (args[0] == "delete") Keyboard.press(KEY_DELETE);
+        else if (args[0] == "insert") Keyboard.press(KEY_INSERT);
+        else if (args[0] == "home") Keyboard.press(KEY_HOME);
+        else if (args[0] == "end") Keyboard.press(KEY_END);
+        else if (args[0] == "pageup") Keyboard.press(KEY_PAGE_UP);
+        else if (args[0] == "pagedown") Keyboard.press(KEY_PAGE_DOWN);
+        else if (args[0] == "up") Keyboard.press(KEY_UP_ARROW);
+        else if (args[0] == "down") Keyboard.press(KEY_DOWN_ARROW);
+        else if (args[0] == "left") Keyboard.press(KEY_LEFT_ARROW);
+        else if (args[0] == "right") Keyboard.press(KEY_RIGHT_ARROW);
+        else if (args[0] == "ctrl") Keyboard.press(KEY_LEFT_CTRL);
+        else if (args[0] == "shift") Keyboard.press(KEY_LEFT_SHIFT);
+        else if (args[0] == "alt") Keyboard.press(KEY_LEFT_ALT);
+        else if (args[0] == "gui") Keyboard.press(KEY_LEFT_GUI);
+        else if (args[0] == "capslock") Keyboard.press(KEY_CAPS_LOCK);
+        else if (args[0] == "numlock") Keyboard.press(KEY_NUM_LOCK);
+        else if (args[0] == "prtsc") Keyboard.press(KEY_PRINT_SCREEN);
+        else if (args[0] == "scrolllock") Keyboard.press(KEY_SCROLL_LOCK);
+        else if (args[0] == "pause") Keyboard.press(KEY_PAUSE);
+        else return;
+
+        Keyboard.releaseAll();
+    }
+
     if (strcmp(command, "functionKey") == 0) // functionKey "<F1-F24>"
     {
         if (!checkArgs(args, 1)) return;
