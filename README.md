@@ -109,7 +109,16 @@ writeLn "ipconfig /all"
 
 ---
 
+## 🔌 Flashing Instructions
+Full guide: [Flashing Tutorial](https://learn.axionsec.pro/Flashing)  
+
+---
+
+## 🌐 Web Interface Preview
+![image](https://github.com/user-attachments/assets/6320dd00-de56-4f7a-8364-3373c245cbcc)
+
 ## 🎥 TikTok Showcase
 
+---
 [![PhantomUSB Demo Video](https://img.shields.io/badge/Video_Demo-%40AxionSecurity-blue?logo=tiktok)](https://vm.tiktok.com/ZNd1U685v/)  
 *See real-world usage examples and creative implementations*
