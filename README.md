@@ -43,6 +43,16 @@
 
 ---
 
+## 🔧 Setup Guide
+![img_1.png](img_1.png)
+1. Glue the CH9329 to the back of the ESP32 (bottom side).
+2. Connect the CH9329 to the ESP32 using small jumper wires.
+3. Make sure everything fits well without parts sticking out.
+4. Connect the LEDs to the ESP32 (soldering is best for a strong connection).
+5. 3D Print ([3mf File](/PhantomUSB%20Case.3mf)) or make a DIY case for the Phantom USB.
+
+---
+
 ## 📶 WiFi Configuration
 
 ```ini
