@@ -198,4 +198,43 @@ void transpiler::processLine(const char* command, const std::vector<String>& arg
 
         Keyboard.releaseAll();
     }
+
+    if (strcmp(command, "clipboard") == 0) {
+        if (!checkArgs(args, 1)) return;
+        if (args[0] == "copy") {
+            Keyboard.press(KEY_LEFT_CTRL);
+            Keyboard.press('c');
+            Keyboard.releaseAll();
+        } else if (args[0] == "paste") {
+            Keyboard.press(KEY_LEFT_CTRL);
+            Keyboard.press('v');
+            Keyboard.releaseAll();
+        }
+    }
+
+    if (strcmp(command, "keyboardLayout") == 0)
+    {
+        if (!checkArgs(args, 1)) return;
+
+        Keyboard.end();
+        if (args[0] == "German") {
+            KeyboardLayout = KeyboardLayout_de_DE;
+        } else if (args[0] == "English") {
+            KeyboardLayout = KeyboardLayout_en_US;
+        } else if (args[0] == "French") {
+            KeyboardLayout = KeyboardLayout_fr_FR;
+        } else if (args[0] == "Spanish") {
+            KeyboardLayout = KeyboardLayout_es_ES;
+        } else if (args[0] == "Portuguese") {
+            KeyboardLayout = KeyboardLayout_pt_PT;
+        } else if (args[0] == "Italian") {
+            KeyboardLayout = KeyboardLayout_it_IT;
+        } else if (args[0] == "Danish") {
+            KeyboardLayout = KeyboardLayout_da_DK;
+        } else if (args[0] == "Swedish"){
+            KeyboardLayout = KeyboardLayout_sv_SE;
+        }
+        Keyboard.begin(ch9329Serial, KeyboardLayout);
+    }
 }
+

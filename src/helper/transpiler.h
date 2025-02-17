@@ -14,5 +14,7 @@ class transpiler {
 };
 
 extern CH9329_Keyboard_ Keyboard;
+extern const uint8_t* KeyboardLayout;
+extern HardwareSerial ch9329Serial;
 
 #endif //TRANSPILER_H

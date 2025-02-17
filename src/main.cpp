@@ -24,6 +24,7 @@ auto password = "12345678910";
 
 HardwareSerial ch9329Serial(1);
 CH9329_Keyboard_ Keyboard;
+const uint8_t *KeyboardLayout = KeyboardLayout_en_US;
 bool ch9329Initialized = false;
 
 void controlLED(const bool state, const uint8_t LED_PIN) {
@@ -34,7 +35,7 @@ bool initializeCH9329() {
     ch9329Serial.begin(CH9329_BAUDRATE, SERIAL_8N1, TX_PIN, RX_PIN);
     delay(100);
 
-    Keyboard.begin(ch9329Serial, KeyboardLayout_en_US);
+    Keyboard.begin(ch9329Serial, KeyboardLayout);
     ch9329Serial.write(0x00);
     Serial.println("Initializing CH9329...");
 
