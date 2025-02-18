@@ -67,7 +67,7 @@ Password: "12345678910"
 ## 📜 Scripting Language Documentation
 
 **Full Documentation Portal:**  
-[https://learn.axionsec.pro/Phantom](https://learn.axionsec.pro/Phantom)
+[https://learn.axionsec.pro/PhantomUSB/Phantom](https://learn.axionsec.pro/PhantomUSB/Phantom)
 
 <sub>![GitHub Repo](https://img.shields.io/badge/Source_Code-GitHub-181717?logo=github)</sub>
 
@@ -80,8 +80,9 @@ Password: "12345678910"
 
 **Advanced Features:**
 - 🖥️ `terminal "OS"` - Auto-open system terminal (Windows/Linux/Mac)
-- 🔢 `functionKey "F1-F24"` - Press function keys
 - 🧭 `arrowKey "direction"` - Navigate with arrow keys
+
+~ much more on [https://learn.axionsec.pro/PhantomUSB/Phantom](https://learn.axionsec.pro/PhantomUSB/Phantom)
 
 ### � Example: Windows Recon Script
 
