@@ -11,6 +11,8 @@ class transpiler {
   private:
     static void processLine(const char* command, const std::vector<String>& args);
     static bool checkArgs(const std::vector<String>& args, uint8_t expected);
+    static void pressKey(const String& key);
+    static std::vector<String> split(const String& str, char delimiter);
 };
 
 extern CH9329_Keyboard_ Keyboard;
