@@ -3,11 +3,11 @@
 **Professional-Grade Keystroke Injection Tool for Security Testing**  
 *Remote HID emulation platform for penetration testing & red team scenarios*
 
-![img.png](img.png)
+![img_2.png](img_2.png)
 
 ---
 
-## 📱 Video Showcase  
+## 📱 Video Showcase
 [![PhantomUSB Demo](https://img.shields.io/badge/TikTok-Showcase-FF0050?logo=tiktok)](https://vm.tiktok.com/ZNd1U685v/)  
 *See it in action! 60-second demo of PhantomUSB capabilities*
 
@@ -17,7 +17,7 @@
 
 - 📡 **Remote Keystroke Injection** via WiFi AP
 - 💡 **Dual LED Status System** (Operation Feedback)
-- 📜 **Embedded Scripting Language** ([Documentation](https://learn.axionsec.pro/Phantom))
+- 📜 **Embedded Scripting Language** ([Documentation](https://learn.axionsec.pro/PhantomUSB/Phantom))
 - ⚡ **Low-latency Communication** with CH9329
 - 🛠️ **Plug & Play Setup** with ESP32
 - 🔒 **Secure Connection** (WPA2 Protected)
@@ -28,16 +28,16 @@
 
 ### 🔌 Pinout Diagram
 
-| ESP32       | CH9329/LEDs      |
-|-------------|------------------|
-| GND         | GND              |
-| VIN (5V)    | 5V               |
-| GPIO 17     | TX               |
-| GPIO 16     | RX               |
-| GPIO 19     | LED Write (+)    |
-| GPIO 18     | LED Status (+)   |
+| ESP32 Wroom32U | CH9329/LEDs      |
+|----------------|------------------|
+| GND            | GND              |
+| VIN (5V)       | 5V               |
+| GPIO 17        | TX               |
+| GPIO 16        | RX               |
+| GPIO 19        | LED Write (+)    |
+| GPIO 18        | LED Status (+)   |
 
-**LED Behavior:**  
+**LED Behavior:**
 - 💚 **Status LED (GPIO 18):** Blinks during script execution
 - 💙 **Write LED (GPIO 19):** Solid = CH9329 Active
 
@@ -80,9 +80,8 @@ Password: "12345678910"
 
 **Advanced Features:**
 - 🖥️ `terminal "OS"` - Auto-open system terminal (Windows/Linux/Mac)
+- 🔢 `functionKey "F1-F24"` - Press function keys
 - 🧭 `arrowKey "direction"` - Navigate with arrow keys
-
-~ much more on [https://learn.axionsec.pro/PhantomUSB/Phantom](https://learn.axionsec.pro/PhantomUSB/Phantom)
 
 ### � Example: Windows Recon Script
 
@@ -121,15 +120,9 @@ writeLn "ipconfig /all"
 ---
 
 ## 🔌 Flashing Instructions
-Full guide: [Flashing Tutorial](https://learn.axionsec.pro/Flashing)  
+Full guide: [Flashing Tutorial](https://learn.axionsec.pro/Flashing)
 
 ---
 
 ## 🌐 Web Interface Preview
 ![image](https://github.com/user-attachments/assets/6320dd00-de56-4f7a-8364-3373c245cbcc)
-
-## 🎥 TikTok Showcase
-
----
-[![PhantomUSB Demo Video](https://img.shields.io/badge/Video_Demo-%40AxionSecurity-blue?logo=tiktok)](https://vm.tiktok.com/ZNd1U685v/)  
-*See real-world usage examples and creative implementations*
