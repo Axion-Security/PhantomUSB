@@ -1,26 +1,29 @@
-# PhantomUSB 🚀🔌
+![Banner](images/banner.png)
 
-**Professional-Grade Keystroke Injection Tool for Security Testing**  
-*Remote HID emulation platform for penetration testing & red team scenarios*
+<h1 align="center">PhantomUSB 🔮</h1>
+<h3 align="center">The Open-Source Keystroke Injection Device for Pentesters</h3>
 
-![img_2.png](img_2.png)
+<p align="center">
+  <img alt="Version" src="https://img.shields.io/badge/version-1.2-blue?style=for-the-badge"/>
+  <img alt="License" src="https://img.shields.io/badge/license-CC4.0-green?style=for-the-badge"/>
+  <img alt="Price" src="https://img.shields.io/badge/cost-$11.24-ff69b4?style=for-the-badge"/> 
+</p>
 
----
-
-## 📱 Video Showcase
-[![PhantomUSB Demo](https://img.shields.io/badge/TikTok-Showcase-FF0050?logo=tiktok)](https://vm.tiktok.com/ZNd1U685v/)  
-*See it in action! 60-second demo of PhantomUSB capabilities*
-
----
+## PhantomUSB
+**PhantomUSB** is a **WiFi-enabled keystroke injection device** with a built-in scripting engine and a dual LED status system. Powered by an **ESP32 Wroom32U** and **CH9329**, it enables seamless, remote-controlled automation of keyboard inputs over a secure WiFi AP. With **low-latency execution**, **plug & play setup**, and an intuitive **web interface**, PhantomUSB is designed for professionals who require precision, flexibility, and efficiency in automated keystroke execution.
 
 ## ✨ Features
-
-- 📡 **Remote Keystroke Injection** via WiFi AP
+- 📡 **Remote Keystroke Injection** via Web Interface (WiFi Access Point)
 - 💡 **Dual LED Status System** (Operation Feedback)
 - 📜 **Embedded Scripting Language** ([Documentation](https://learn.axionsec.pro/PhantomUSB/Phantom))
-- ⚡ **Low-latency Communication** with CH9329
-- 🛠️ **Plug & Play Setup** with ESP32
+- ⚡  **Low-latency Communication** with CH9329
+- 🛠️ **Plug & Play Setup** with ESP32 Wroom32U & CH9329
 - 🔒 **Secure Connection** (WPA2 Protected)
+- 📚 **Open Source** (Fully Customizable)
+- 📱 **Cross-Platform Compatibility** (Windows, Linux, Mac)
+- 🚀 **Easy Flashing** using Web Flasher ([Web Flasher](https://flash.axionsec.pro/))
+- 📖 **Detailed Documentation** ([Learn](https://learn.axionsec.pro/PhantomUSB/Phantom))
+- 💸 **Cheap & Affordable** (DIY Components ~ $11.24)
 
 ---
 
@@ -28,23 +31,39 @@
 
 ### 🔌 Pinout Diagram
 
-| ESP32 Wroom32U | CH9329/LEDs      |
-|----------------|------------------|
-| GND            | GND              |
-| VIN (5V)       | 5V               |
-| GPIO 17        | TX               |
-| GPIO 16        | RX               |
-| GPIO 19        | LED Write (+)    |
-| GPIO 18        | LED Status (+)   |
+| ESP32 Wroom32U | CH9329 | LEDs       |
+|----------------|--------|------------|
+| GND            | GND    |            |
+| VIN (5V)       | 5V     |            |
+| GPIO 17        | TX     |            |
+| GPIO 16        | RX     |            |
+| GPIO 19        |        | LED Write  |
+| GPIO 18        |        | LED Status |
 
 **LED Behavior:**
-- 💚 **Status LED (GPIO 18):** Blinks during script execution
-- 💙 **Write LED (GPIO 19):** Solid = CH9329 Active
+- 💚 **Write LED (GPIO 18):** Blinks during script execution
+- 💙 **Status LED (GPIO 19):** Solid = CH9329 Active and ready 
 
 ---
 
-## 🔧 Setup Guide
-![img_1.png](img_1.png)
+### 📦 Components
+| Component                       | Quantity | Price   | Source      |
+|---------------------------------|----------|---------|-------------|
+| ESP32 Wroom32U                  | 1        | ~ $5    | AliExpress  |
+| CH9329                          | 1        | ~ $1.85 | AliExpress  |
+| LEDs (Blue and Green)           | 2        | ~ $1.59 | AliExpress  |
+| Jumper Wires (10cm)             | 1        | ~ $1.30 | AliExpress  |
+| IPEX to SMA Pigtail Antenna Set | 1        | ~ $1.50 | AliExpress  |
+- Total Cost: **$11.24** (Excluding Shipping)
+- ~ = Approximate Price
+- **Note:** Prices may vary based on the seller and location.
+- **Soldiering is not required when using jumper wires.**
+- 🧩 **No Soldering Needed** - Jumper wire compatible
+---
+
+### 🔧 Setup Guide
+<img src="images/setup_showcase.png" alt="Showcase" width="200">
+
 1. Glue the CH9329 to the back of the ESP32 (bottom side).
 2. Connect the CH9329 to the ESP32 using small jumper wires.
 3. Make sure everything fits well without parts sticking out.
@@ -53,25 +72,20 @@
 
 ---
 
-## 📶 WiFi Configuration
+## 📶 WiFi Credentials
 
 ```ini
+IP: 192.168.4.1
 SSID: "PhantomUSB"
 Password: "12345678910"
 ```
-
-*Connect to this network to access control interface*
 
 ---
 
 ## 📜 Scripting Language Documentation
 
-**Full Documentation Portal:**  
+**Full Documentation:**  
 [https://learn.axionsec.pro/PhantomUSB/Phantom](https://learn.axionsec.pro/PhantomUSB/Phantom)
-
-<sub>![GitHub Repo](https://img.shields.io/badge/Source_Code-GitHub-181717?logo=github)</sub>
-
-### 🔑 Core Features
 
 **Basic Commands:**
 - ⌨️ `write "text"` - Type text with keyboard emulation
@@ -80,49 +94,6 @@ Password: "12345678910"
 
 **Advanced Features:**
 - 🖥️ `terminal "OS"` - Auto-open system terminal (Windows/Linux/Mac)
-- 🔢 `functionKey "F1-F24"` - Press function keys
+- 🔢 `key "F1-F24"` - Press any key
 - 🧭 `arrowKey "direction"` - Navigate with arrow keys
-
-### � Example: Windows Recon Script
-
-```plaintext
-terminal "windows"
-delay "1000"
-writeLn "systeminfo"
-delay "5500"
-writeLn "ipconfig /all"
-```
-
-**Execution Flow:**
-1. 🪟 Opens Windows Terminal
-2. ⏲️ 1s delay for loading
-3. 📝 Starts `systeminfo` command
-4. ⏳ 5.5s pause before execution
-5. 📡 Triggers network configuration dump
-
-## 🚀 Getting Started
-
-1. **Hardware Setup**  
-   🔄 Connect components according to pinout diagram
-
-2. **Power On**  
-   ⚡ Wait for Status LED to light up solid Blue
-
-3. **Connect to WiFi**  
-   📱 Join "PhantomUSB" network on your device
-
-4. **Access Web Interface**  
-   🌐 Navigate to `192.168.4.1` in your browser
-
-5. **Execute Scripts**  
-   📜 Paste your PhantomScript code and watch the Write LED blink (Green)!
-
----
-
-## 🔌 Flashing Instructions
-Full guide: [Flashing Tutorial](https://learn.axionsec.pro/Flashing)
-
----
-
-## 🌐 Web Interface Preview
-![image](https://github.com/user-attachments/assets/6320dd00-de56-4f7a-8364-3373c245cbcc)
+- 🤖 `comboKey "key1+key2"` - Press multiple keys simultaneously
